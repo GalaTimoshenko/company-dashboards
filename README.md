@@ -5,6 +5,5 @@
 | Сводка | Ссылка |
 |---|---|
 | АиГринд — игровая студия | https://galatimoshenko.github.io/company-dashboards/aigrind/ |
-| Smart Laser — лазерные станки | https://galatimoshenko.github.io/company-dashboards/smartlaser/ |
 
 Как делаю: вопрос руководителя → факты с источниками → таблицы → выводы → одна страница. Страницы статичные (HTML + d3.js), работают с телефона.
