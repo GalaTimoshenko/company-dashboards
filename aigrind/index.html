@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>АиГринд: сводка руководителя</title>
+<meta name="description" content="Сводка по игровой студии АиГринд на открытых данных. Подготовила Галина Тимошенко.">
+<style>
+:root{--color-fg:#14202c;--color-fg-muted:#5a6876;--color-bg:#f6f8fa;--color-panel:#ffffff;--color-border-line:#d8dee5;--color-ok:#1e7a46;--color-warn:#a15c00;--color-bad:#b42318;
+--c1:#1f5f99;--c2:#2a9d8f;--cds-chart-muted:#b8c2cc;--cds-chart-axis:#7d8a97;--cds-text-secondary:#5a6876;--cds-surface-popover:#ffffff;--cds-border:#d8dee5;--cds-shadow-popover:0 4px 14px rgba(20,32,44,.14);
+--font-anthropic-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;--font-anthropic-serif:Georgia,"PT Serif","Times New Roman",serif;
+--cds-font-size-caption:12px;--cds-font-size-body:14px;--cds-font-size-heading:18px;--cds-font-size-title:28px;--cds-font-weight-medium:600;
+--cds-gap-xs:4px;--cds-gap-sm:8px;--cds-gap-md:12px;--cds-gap-lg:16px;--cds-gap-xl:28px;--cds-pad-sm:8px;--cds-pad-lg:16px;--cds-pad-xl:24px;--cds-radius:10px}
+@media (prefers-color-scheme:dark){:root{--color-fg:#e6ebf0;--color-fg-muted:#9aa7b4;--color-bg:#10161c;--color-panel:#18212a;--color-border-line:#2b3744;--color-ok:#6fd39a;--color-warn:#f2b552;--color-bad:#ff8a7d;
+--c1:#6aa8ec;--c2:#5cc8b8;--cds-chart-muted:#4a5866;--cds-chart-axis:#8796a5;--cds-text-secondary:#9aa7b4;--cds-surface-popover:#202b36;--cds-border:#2b3744;--cds-shadow-popover:0 4px 14px rgba(0,0,0,.5);color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--color-bg);color:var(--color-fg);font-family:var(--font-anthropic-sans);font-size:14px}
+#dash-root{max-width:1100px;margin:0 auto;padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.sx-sources{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
+.sx-sources summary{cursor:pointer}
+.sx-sources a{color:var(--c1)}
+
+/* Layout: инвертированная шапка с 4 крупными цифрами → деньги и перелом флота → карта связей → путь компании → светофор рисков */
+
+/* Layout: шапка с 4 цифрами → игры и онлайн → карта связей → путь → риски */
+.sx{display:flex;flex-direction:column;gap:var(--cds-gap-xl);font-family:var(--font-anthropic-sans);color:var(--color-fg)}
+.sx-hero{background:var(--color-fg);color:var(--color-bg);border-radius:var(--cds-radius);padding:var(--cds-pad-xl);display:flex;flex-direction:column;gap:var(--cds-gap-lg)}
+.sx-eyebrow{font-size:var(--cds-font-size-caption);text-transform:uppercase;letter-spacing:.08em;opacity:.7}
+.sx-title{font-family:var(--font-anthropic-serif);font-weight:400;font-size:var(--cds-font-size-title);margin:0;text-wrap:balance}
+.sx-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:var(--cds-gap-lg)}
+.sx-kpi{display:flex;flex-direction:column;gap:2px;min-width:0;border-top:1px solid color-mix(in srgb,var(--color-bg) 30%,transparent);padding-top:var(--cds-pad-sm)}
+.sx-big{font-family:var(--font-anthropic-serif);font-weight:400;font-size:clamp(34px,6vw,52px);line-height:1;font-variant-numeric:tabular-nums}
+.sx-unit{font-size:var(--cds-font-size-body);opacity:.75;margin-left:4px}
+.sx-cap{font-size:var(--cds-font-size-caption);opacity:.75}
+.sx-tag{display:inline-block;margin-top:4px;font-size:var(--cds-font-size-caption);font-weight:var(--cds-font-weight-medium);padding:1px 8px;border-radius:10px;background:var(--color-ok);color:var(--color-bg);width:max-content}
+.sx h2{font-size:var(--cds-font-size-heading);font-weight:var(--cds-font-weight-medium);margin:0}
+.sx-sec{display:flex;flex-direction:column;gap:var(--cds-gap-md)}
+.sx-two{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:var(--cds-gap-lg)}
+.sx-card{background:var(--color-panel);border:1px solid var(--color-border-line);border-radius:var(--cds-radius);padding:var(--cds-pad-lg);display:flex;flex-direction:column;gap:var(--cds-gap-md);min-width:0;position:relative}
+.sx-card h3{font-size:var(--cds-font-size-body);font-weight:var(--cds-font-weight-medium);margin:0}
+.sx-donut{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:var(--cds-gap-lg);min-height:180px}
+.sx-legend{display:flex;flex-direction:column;gap:8px;font-size:var(--cds-font-size-caption)}
+.sx-legend div{display:flex;align-items:center;gap:8px}
+.sx-legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
+.sx-legend b{font-variant-numeric:tabular-nums;font-size:var(--cds-font-size-body)}
+.sx-turn{display:flex;align-items:center;gap:var(--cds-gap-md);flex-wrap:wrap}
+.sx-turn .n{font-family:var(--font-anthropic-serif);font-weight:400;font-size:clamp(28px,4.5vw,40px);font-variant-numeric:tabular-nums;line-height:1}
+.sx-turn .y{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
+.sx-turn svg{flex:0 0 auto}
+.sx-bad{color:var(--color-bad)} .sx-ok{color:var(--color-ok)}
+.sx-mini{position:relative;min-height:70px}
+.sx-adds{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:var(--cds-font-size-body);line-height:1.4}
+.sx-adds li{display:grid;grid-template-columns:64px 1fr;gap:8px}
+.sx-adds .d{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);font-variant-numeric:tabular-nums;padding-top:2px}
+.sx-net{position:relative;min-height:300px}
+.sx-tip{position:absolute;pointer-events:none;background:var(--cds-surface-popover);border:1px solid var(--cds-border);box-shadow:var(--cds-shadow-popover);border-radius:var(--cds-radius);padding:6px 9px;font-size:var(--cds-font-size-caption);max-width:260px;z-index:2;color:var(--color-fg)}
+.sx svg text{font-family:var(--font-anthropic-sans)}
+.sx-key{display:flex;flex-wrap:wrap;gap:var(--cds-gap-md);font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
+.sx-key span{display:inline-flex;align-items:center;gap:6px}
+.sx-key i{display:inline-block;width:22px;border-top:2px solid var(--cds-chart-axis)}
+.sx-key i.d{border-top-style:dashed}
+.sx-path{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));row-gap:18px;margin:0;padding:0;list-style:none}
+.sx-step{position:relative;padding:18px 10px 0 0;border-top:2px solid var(--color-border-line);display:flex;flex-direction:column;gap:4px;min-width:0}
+.sx-step::before{content:"";position:absolute;top:-7px;left:0;width:12px;height:12px;border-radius:50%;background:var(--sx-dot,var(--cds-chart-muted));border:2px solid var(--color-bg)}
+.sx-step .d{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);font-variant-numeric:tabular-nums}
+.sx-step .t{font-size:var(--cds-font-size-caption);font-weight:var(--cds-font-weight-medium);line-height:1.35}
+.sx-lights{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--cds-gap-md)}
+.sx-light{border-radius:var(--cds-radius);border:1px solid var(--color-border-line);border-left:6px solid var(--sx-c);background:var(--color-panel);align-self:start}
+.sx-light summary{list-style:none;cursor:pointer;padding:var(--cds-pad-lg);padding-right:40px;display:flex;flex-direction:column;gap:4px;position:relative}
+.sx-light summary::-webkit-details-marker{display:none}
+.sx-light summary::after{content:"";position:absolute;right:16px;top:22px;width:8px;height:8px;border-right:2px solid var(--color-fg-muted);border-bottom:2px solid var(--color-fg-muted);transform:rotate(45deg)}
+.sx-light[open] summary::after{transform:rotate(-135deg);top:26px}
+.sx-light summary:hover{background:color-mix(in srgb,var(--sx-c) 8%,transparent)}
+.sx-light summary:focus-visible{outline:2px solid var(--sx-c);outline-offset:-2px}
+.sx-more{padding:0 var(--cds-pad-lg) var(--cds-pad-lg);display:flex;flex-direction:column;gap:6px;font-size:var(--cds-font-size-body);line-height:1.45}
+.sx-more p{margin:0}
+.sx-src{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted)}
+.sx-light .k{font-size:var(--cds-font-size-caption);text-transform:uppercase;letter-spacing:.06em;color:var(--sx-c);font-weight:var(--cds-font-weight-medium)}
+.sx-light .t{font-weight:var(--cds-font-weight-medium)}
+.sx-foot{font-size:var(--cds-font-size-caption);color:var(--color-fg-muted);margin:0}
+[data-dash-source-state=refreshing]{opacity:.5}
+</style>
+</head>
+<body>
+<div id="dash-root">
+<div class="sx" lang="ru" data-read>
+  <header class="sx-hero" id="top">
+    <span class="sx-eyebrow">АиГринд · сводка руководителя · открытые данные</span>
+    <h1 class="sx-title">Выручка выросла на треть, но 2025 год студия закрыла с убытком 102 млн ₽</h1>
+    <div class="sx-kpis">
+      <div class="sx-kpi"><span class="sx-cap">Выручка 2025</span><span><span class="sx-big" data-draw="v-rev" data-source="metrics" data-field="value" data-where="id=rev_2025">—</span><span class="sx-unit">млн ₽</span></span><span class="sx-tag">+34% к 2024</span></div>
+      <div class="sx-kpi"><span class="sx-cap">Чистый результат 2025</span><span><span class="sx-big" data-draw="v-np" data-source="metrics" data-field="value" data-where="id=np_2025">—</span><span class="sx-unit">млн ₽</span></span><span class="sx-cap">в 2024 году прибыль ≈ +<span data-draw="v-np24" data-source="metrics" data-field="value" data-where="id=np_2024">—</span> млн</span></div>
+      <div class="sx-kpi"><span class="sx-cap">Сотрудников 2025</span><span class="sx-big" data-draw="v-staff" data-source="metrics" data-field="value" data-where="id=staff">—</span><span class="sx-cap">+15 за год, данные ФНС</span></div>
+      <div class="sx-kpi"><span class="sx-cap">Установок в Google Play</span><span><span class="sx-big" data-draw="v-inst" data-source="installs">—</span><span class="sx-unit">млн+</span></span><span class="sx-cap">две игры, ноябрь 2026</span></div>
+    </div>
+    <span class="sx-cap">ООО «Айгринд», ИНН 3906216773, малое предприятие. Игры в магазинах выпускает кипрская TITULUM, поэтому выручка российского юрлица может не совпадать с доходом от игр.</span>
+  </header>
+
+  <section class="sx-two" id="money">
+    <div class="sx-card">
+      <h3>Деньги: 2024 → 2025, млн ₽</h3>
+      <div class="sx-mini" data-draw="fin" data-source="metrics"></div>
+      <span class="sx-foot">Капитал упал на 73%: убыток почти целиком съел собственные средства. 2024 год рассчитан из процентов изменения.</span>
+    </div>
+    <div class="sx-card">
+      <h3>Две игры: масштаб и оценки</h3>
+      <div class="sx-mini" data-draw="games" data-source="metrics"></div>
+      <span class="sx-foot">Google Play, ноябрь 2026. App Store, ПК и Steam в установки не входят.</span>
+    </div>
+    <div class="sx-card">
+      <h3>Warspear в Steam: средний онлайн по месяцам, 2026</h3>
+      <div class="sx-mini" data-draw="steamchart" data-source="steam"></div>
+      <span class="sx-foot">Только ПК-версия в Steam. Пик за всю историю: 284 в среднем за месяц, ноябрь 2017.</span>
+    </div>
+  </section>
+
+  <section class="sx-sec" id="links">
+    <h2>Карта связей</h2>
+    <div class="sx-key"><span><i></i>факт</span><span><i class="d"></i>мой вывод</span><span>наведите на номер</span></div>
+    <div class="sx-card"><div class="sx-net" id="net" data-draw="net" data-source="nodes links"></div></div>
+  </section>
+
+  <section class="sx-sec" id="path">
+    <h2>Путь компании</h2>
+    <ol class="sx-path" data-draw="path" data-source="events"></ol>
+  </section>
+
+  <section class="sx-sec" id="lights">
+    <h2>Риски и возможности</h2>
+    <p class="sx-foot">Нажмите на карточку: откроются детали, а на карте связей подсветятся участники.</p>
+    <div class="sx-lights">
+      <details class="sx-light" id="r-loss" style="--sx-c:var(--color-bad)" data-nodes="АиГринд">
+        <summary><span class="k">Риск</span><span class="t">Убыток съел капитал</span><span class="sx-foot">−101,7 млн ₽ при выручке 212 млн</span></summary>
+        <div class="sx-more">
+          <p>В 2025 году расходы выросли быстрее выручки: команда +15 человек, выручка +34%, итог — убыток 48% от выручки. Капитал снизился со ~133 до 36 млн ₽. Если 2026 год будет таким же, капитал уйдёт в минус без денег владельцев.</p>
+          <p><b>Что отслеживать:</b> расходы на команду и маркетинг против выручки по месяцам.</p>
+          <p class="sx-src">Факты: ФНС за 2025 год. Расчёт 2024 года и вывод мои.</p>
+        </div>
+      </details>
+      <details class="sx-light" id="r-one" style="--sx-c:var(--color-warn)" data-nodes="Warspear Online|TITULUM (Кипр)">
+        <summary><span class="k">Внимание</span><span class="t">Одна старая игра</span><span class="sx-foot">Warspear: 10 из 11 млн установок</span></summary>
+        <div class="sx-more">
+          <p>Warspear работает с ~2008 года. Средний онлайн в Steam в октябре 2026 года (194) на треть ниже пика ноября 2017 года (284). Игры в магазинах числятся за кипрской TITULUM, команда оформлена в трёх странах.</p>
+          <p><b>Что отслеживать:</b> удержание новых игроков и долю выручки Skylore.</p>
+          <p class="sx-src">Факты: Google Play, SteamCharts, пост компании 22.08.2024. Вывод мой.</p>
+        </div>
+      </details>
+      <details class="sx-light" id="r-sky" style="--sx-c:var(--color-ok)" data-nodes="Skylore|АиГринд">
+        <summary><span class="k">Возможность</span><span class="t">Skylore растёт</span><span class="sx-foot">Оценка 4,6, регулярные обновления</span></summary>
+        <div class="sx-more">
+          <p>Skylore за ~3 года набрала 1 млн+ установок и 93 тыс. отзывов при оценке 4,6 (у Warspear 4,4). В октябре 2026 года вышло обновление 2.8.</p>
+          <p><b>Что отслеживать:</b> рост установок и платящих игроков Skylore по месяцам.</p>
+          <p class="sx-src">Факты: Google Play. Вывод о возможности мой.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <p class="sx-foot">Демо Галины Тимошенко на открытых данных, 13.11.2026. С внутренними данными: удержание, платящие игроки и выручка по играм и странам.</p>
+  <details class="sx-sources" id="sources">
+    <summary>Источники</summary>
+    <ul>
+      <li><a href="https://bo.nalog.gov.ru" target="_blank" rel="noopener">ФНС, отчётность за 2025 год</a>: выручка, прибыль, капитал, активы, численность (ИНН 3906216773)</li>
+      <li><a href="https://career.habr.com/companies/aigrind" target="_blank" rel="noopener">Хабр Карьера</a>: профиль компании, игры, адрес</li>
+      <li><a href="https://spark-interfax.ru/kaliningradskaya-oblast-kaliningrad/ooo-aigrind-inn-3906216773-ogrn-1103925008131-823cf8eb3b4048f3af3ca53ece82932e" target="_blank" rel="noopener">СПАРК-Интерфакс</a>: дата регистрации, учредители, ОКВЭД</li>
+      <li><a href="https://setka.ru/posts/01917a78-0a60-4bb0-859d-441edf5ab577" target="_blank" rel="noopener">Пост компании в «Сетке», 22.08.2024</a>: возраст игр, команда, найм в трёх странах</li>
+      <li><a href="https://play.google.com/store/apps/details?id=com.aigrind.warspear" target="_blank" rel="noopener">Google Play: Warspear Online</a>: установки, оценка, издатель</li>
+      <li><a href="https://play.google.com/store/apps/details?id=com.aigrind.skylore" target="_blank" rel="noopener">Google Play: Skylore</a>: установки, оценка, обновления</li>
+      <li><a href="https://steamcharts.com/app/326360" target="_blank" rel="noopener">SteamCharts</a>: онлайн Warspear в Steam</li>
+      <li><a href="https://i-free.com/en/about" target="_blank" rel="noopener">i-Free</a>: о группе</li>
+    </ul>
+  </details>
+</div>
+</div>
+<script src="../d3.min.js"></script>
+<script>
+(function(){
+  const DATA={"metrics": [{"id": "ws_installs", "value": 10, "unit": "млн+", "year": "2026", "source": "Google Play, 11.2026"}, {"id": "sk_installs", "value": 1, "unit": "млн+", "year": "2026", "source": "Google Play, 11.2026"}, {"id": "ws_rating", "value": 4.4, "unit": "", "year": "2026", "source": "Google Play"}, {"id": "sk_rating", "value": 4.6, "unit": "", "year": "2026", "source": "Google Play"}, {"id": "ws_reviews", "value": 199, "unit": "тыс.", "year": "2026", "source": "Google Play"}, {"id": "sk_reviews", "value": 93, "unit": "тыс.", "year": "2026", "source": "Google Play"}, {"id": "years", "value": 16, "unit": "+", "year": "2024", "source": "пост компании в «Сетке», 22.08.2024"}, {"id": "steam_peak_2017", "value": 284, "unit": "", "year": "11.2017", "source": "SteamCharts"}, {"id": "rev_2025", "value": 212.1, "unit": "млн ₽", "year": "2025", "source": "ФНС за 2025 год (сервис проверки контрагентов, скриншот 13.11.2026)"}, {"id": "rev_2024", "value": 158.3, "unit": "млн ₽", "year": "2024", "source": "расчёт: 212,1 / 1,34"}, {"id": "np_2025", "value": -101.7, "unit": "млн ₽", "year": "2025", "source": "ФНС за 2025 год (сервис проверки контрагентов, скриншот 13.11.2026)"}, {"id": "np_2024", "value": 11.8, "unit": "млн ₽", "year": "2024", "source": "расчёт из изменения −959%"}, {"id": "eq_2025", "value": 36.0, "unit": "млн ₽", "year": "2025", "source": "ФНС за 2025 год (сервис проверки контрагентов, скриншот 13.11.2026)"}, {"id": "eq_2024", "value": 133.3, "unit": "млн ₽", "year": "2024", "source": "расчёт из изменения −73%"}, {"id": "assets_2025", "value": 39.8, "unit": "млн ₽", "year": "2025", "source": "ФНС за 2025 год (сервис проверки контрагентов, скриншот 13.11.2026)"}, {"id": "staff", "value": 72, "unit": "чел.", "year": "2025", "source": "ФНС за 2025 год (сервис проверки контрагентов, скриншот 13.11.2026)"}, {"id": "staff_d", "value": 15, "unit": "чел.", "year": "2025", "source": "ФНС за 2025 год (сервис проверки контрагентов, скриншот 13.11.2026)"}], "steam": [{"month": "2026-03", "avg": 184.5}, {"month": "2026-04", "avg": 177.0}, {"month": "2026-05", "avg": 162.6}, {"month": "2026-06", "avg": 141.7}, {"month": "2026-07", "avg": 132.2}, {"month": "2026-08", "avg": 130.8}, {"month": "2026-09", "avg": 153.4}, {"month": "2026-10", "avg": 194.2}], "events": [{"date": "2008", "event": "Запуск Warspear Online (по словам компании в 08.2024 — «16 лет в релизе»)", "kind": "Продукт", "short": "Запуск Warspear Online"}, {"date": "2010-03", "event": "Зарегистрировано ООО «Айгринд» в Калининграде", "kind": "Компания", "short": "ООО «Айгринд»"}, {"date": "2017-11", "event": "Warspear в Steam: рекорд онлайна 702 игрока одновременно (данные SteamCharts с 10.2017)", "kind": "Продукт", "short": "Steam: рекорд онлайна"}, {"date": "2023", "event": "Выход Skylore (вывод: в 08.2024 компания писала «1,5 года в релизе»)", "kind": "Рост", "short": "Вышла Skylore"}, {"date": "2024-08", "event": "Включена в реестр МСП как малое предприятие (с 10.08.2024)", "kind": "Компания", "short": "Малое предприятие в реестре МСП"}, {"date": "2025", "event": "Выручка 212,1 млн ₽ (+34%), чистый убыток 101,7 млн ₽, капитал −73%; 72 сотрудника (+15)", "kind": "Риск", "short": "Выручка +34%, убыток 102 млн"}, {"date": "2026-09", "event": "Обновление Warspear Online 13.4", "kind": "Продукт", "short": "Warspear 13.4"}, {"date": "2026-10", "event": "Обновление Skylore 2.8; средний онлайн Warspear в Steam — максимум 2026 года (194)", "kind": "Рост", "short": "Skylore 2.8, онлайн растёт"}], "nodes": [{"node": "Группа i-Free", "note": "Петербург, инвестор", "col": 0, "row": 0}, {"node": "ООО «Ай-Фри Венчурс»", "note": "учредитель", "col": 0, "row": 1}, {"node": "Т. А. Хворостова", "note": "учредитель", "col": 0, "row": 2}, {"node": "АиГринд", "note": "Калининград, 72 чел. (2025)", "col": 1, "row": 1}, {"node": "Warspear Online", "note": "10 млн+ установок", "col": 2, "row": 0}, {"node": "Skylore", "note": "1 млн+ установок", "col": 2, "row": 2}, {"node": "TITULUM (Кипр)", "note": "издатель в Google Play", "col": 3, "row": 1}], "links": [{"n": 1, "src": "Группа i-Free", "dst": "ООО «Ай-Фри Венчурс»", "relation": "венчурная структура группы (по названию; группа с 2012 года ведёт венчурный фонд)", "kind": "вывод", "source": "i-free.com/en/about"}, {"n": 2, "src": "ООО «Ай-Фри Венчурс»", "dst": "АиГринд", "relation": "учредитель, доля не раскрыта", "kind": "факт", "source": "СПАРК-Интерфакс"}, {"n": 3, "src": "Т. А. Хворостова", "dst": "АиГринд", "relation": "учредитель, доля не раскрыта", "kind": "факт", "source": "СПАРК-Интерфакс"}, {"n": 4, "src": "АиГринд", "dst": "Warspear Online", "relation": "разработчик, игра с ~2008 года", "kind": "факт", "source": "Хабр Карьера; пост компании 08.2024"}, {"n": 5, "src": "АиГринд", "dst": "Skylore", "relation": "разработчик, игра с ~2023 года", "kind": "факт", "source": "Хабр Карьера; пост компании 08.2024"}, {"n": 6, "src": "TITULUM (Кипр)", "dst": "Warspear Online", "relation": "указан разработчиком в Google Play; связь с АиГринд не раскрыта", "kind": "вывод", "source": "Google Play"}, {"n": 7, "src": "TITULUM (Кипр)", "dst": "Skylore", "relation": "указан разработчиком в Google Play", "kind": "вывод", "source": "Google Play"}]};
+  const calcs={}, draws=[], listeners=[];
+  const cache={};
+  function compute(id){const c=calcs[id];return c.fn(...c.inputs.map(i=>calcs[i]?compute(i):DATA[i]));}
+  window.dash={
+    colors:['var(--c1)','var(--c2)'],
+    data(id){ if(DATA[id]) return {status:'ok',data:DATA[id]}; if(calcs[id]) return {status:'ok',data:compute(id)}; return {status:'missing',data:[]}; },
+    calc(id,o){calcs[id]=o;},
+    loader(){},
+    onData(fn){listeners.push(fn);fn();},
+    draw(name,fn){ if(fn){draws.push([name,fn]);} else { run(name); } },
+    params(){return{};}, setParams(){}, resetParams(){}, setLink(){}, refresh(){}
+  };
+  function run(only){ draws.forEach(([n,f])=>{ if(only&&n!==only) return; document.querySelectorAll('[data-draw="'+n+'"]').forEach(el=>{ if(el.closest('[hidden]')) return; try{ (typeof f==='function'?f:f.update)(el); }catch(e){console.error(n,e);} }); }); }
+  window.__dashRunAll=run;
+  let w=window.innerWidth; window.addEventListener('resize',()=>{ if(Math.abs(window.innerWidth-w)>4){ w=window.innerWidth; run(); } });
+})();
+</script>
+<script>
+var sxValue;
+window.SX = {
+  num(v, d) { return Number(v).toLocaleString('ru-RU', {minimumFractionDigits: d, maximumFractionDigits: d}); },
+  row(id) { const m = dash.data('metrics'); return m.status === 'ok' ? m.data.find((r) => r.id === id) : null; },
+  tip(box) {
+    let t = box.querySelector('.sx-tip');
+    if (!t) { t = document.createElement('div'); t.className = 'sx-tip'; t.hidden = true; box.appendChild(t); }
+    return {
+      show(ev, text) { t.textContent = text; t.hidden = false; const b = box.getBoundingClientRect(); const x = Math.min(ev.clientX - b.left + 12, box.clientWidth - t.offsetWidth - 4); t.style.left = Math.max(0, x) + 'px'; t.style.top = (ev.clientY - b.top + 12) + 'px'; },
+      hide() { t.hidden = true; }
+    };
+  }
+};
+
+
+sxValue = function(name, id, digits) {
+  dash.draw(name, (el) => { const r = SX.row(id); el.textContent = r ? SX.num(Number(r.value), digits) : '—'; });
+};
+sxValue('v-staff', 'staff', 0);
+sxValue('v-rev', 'rev_2025', 1);
+sxValue('v-np', 'np_2025', 1);
+sxValue('v-np24', 'np_2024', 1);
+sxValue('v-years', 'years', 0);
+document.querySelectorAll('.sx-light').forEach((d) => d.addEventListener('toggle', () => dash.draw('net')));
+dash.calc('installs', {
+  title: 'Установки двух игр', description: 'Сумма нижних границ установок Warspear и Skylore в Google Play, млн.',
+  inputs: ['metrics'],
+  fn: (metrics) => { const g = (id) => Number((metrics.find((r) => r.id === id) || {}).value); return g('ws_installs') + g('sk_installs'); }
+});
+dash.draw('v-inst', (el) => { const c = dash.data('installs'); el.textContent = c.status === 'ok' ? SX.num(c.data, 0) : '—'; });
+dash.draw('fin', (el) => {
+  el.replaceChildren();
+  const g = (id) => { const r = SX.row(id); return r ? Number(r.value) : 0; };
+  const rows = [['Выручка', g('rev_2024'), g('rev_2025')], ['Чистый результат', g('np_2024'), g('np_2025')], ['Капитал', g('eq_2024'), g('eq_2025')]];
+  const W = el.clientWidth || 300, rowH = 50, H = rows.length * rowH, mid = 40;
+  const mx = d3.max(rows, (r) => Math.max(Math.abs(r[1]), Math.abs(r[2])));
+  const x = d3.scaleLinear().domain([0, mx]).range([0, W - mid - 48]);
+  const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Выручка, чистый результат и капитал 2024 и 2025');
+  const tip = SX.tip(el);
+  svg.append('line').attr('x1', mid).attr('x2', mid).attr('y1', 0).attr('y2', 0).style('stroke', 'var(--cds-chart-axis)');
+  rows.forEach((r, i) => {
+    const y = i * rowH;
+    svg.append('text').attr('x', 0).attr('y', y + 13).style('font-size', '12px').style('font-weight', 600).style('fill', 'var(--color-fg)').text(r[0]);
+    [[r[1], '2024'], [r[2], '2025']].forEach(([v, yr], j) => {
+      const yy = y + 18 + j * 14, w = Math.max(2, x(Math.abs(v))), neg = v < 0;
+      const col = neg ? 'var(--color-bad)' : (j ? dash.colors[0] : 'var(--cds-chart-muted)');
+      svg.append('text').attr('x', mid - 6).attr('y', yy + 9).attr('text-anchor', 'end').style('font-size', '11px').style('fill', 'var(--cds-text-secondary)').text(yr);
+      svg.append('rect').attr('x', mid).attr('y', yy).attr('height', 11).attr('rx', 2).attr('width', w).style('fill', col)
+        .on('mousemove', (ev) => tip.show(ev, `${r[0]} ${yr}: ${SX.num(v, 1)} млн ₽`)).on('mouseleave', tip.hide);
+      svg.append('text').attr('x', mid + w + 4).attr('y', yy + 9).style('font-size', '11px').style('font-weight', j ? 600 : 400).style('fill', neg ? 'var(--color-bad)' : 'var(--color-fg)').text(SX.num(v, 1));
+    });
+  });
+});
+dash.draw('v-steam', (el) => { const d = dash.data('steam'); el.textContent = d.status === 'ok' ? SX.num(d.data[d.data.length - 1].avg, 0) : '—'; });
+dash.draw('v-steam-g', (el) => {
+  const d = dash.data('steam'); if (d.status !== 'ok') { el.textContent = '—'; return; }
+  const a = d3.min(d.data, (r) => r.avg), b = d.data[d.data.length - 1].avg;
+  el.textContent = '+' + SX.num(Math.round((b / a - 1) * 100), 0) + '% ко дну лета';
+});
+dash.draw('games', (el) => {
+  el.replaceChildren();
+  const g = (id) => { const r = SX.row(id); return r ? Number(r.value) : 0; };
+  const rows = [
+    {name: 'Warspear Online', inst: g('ws_installs'), rate: g('ws_rating'), rev: g('ws_reviews')},
+    {name: 'Skylore', inst: g('sk_installs'), rate: g('sk_rating'), rev: g('sk_reviews')}
+  ];
+  const W = el.clientWidth || 300, rowH = 54, H = rows.length * rowH, lab = 0;
+  const x = d3.scaleLinear().domain([0, d3.max(rows, (r) => r.inst)]).range([0, W - 90]);
+  const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Установки Warspear Online и Skylore в Google Play');
+  const tip = SX.tip(el);
+  rows.forEach((r, i) => {
+    const y = i * rowH;
+    svg.append('text').attr('x', 0).attr('y', y + 13).style('font-size', '12px').style('font-weight', 600).style('fill', 'var(--color-fg)').text(r.name);
+    svg.append('text').attr('x', W).attr('y', y + 13).attr('text-anchor', 'end').style('font-size', '12px').style('fill', 'var(--cds-text-secondary)').text(`★ ${SX.num(r.rate, 1)} · ${SX.num(r.rev, 0)} тыс. отзывов`);
+    svg.append('rect').attr('x', lab).attr('y', y + 20).attr('height', 18).attr('rx', 3).attr('width', Math.max(3, x(r.inst))).style('fill', i ? dash.colors[1] : dash.colors[0])
+      .on('mousemove', (ev) => tip.show(ev, `${r.name}: ${SX.num(r.inst, 0)} млн+ установок в Google Play`)).on('mouseleave', tip.hide);
+    svg.append('text').attr('x', lab + Math.max(3, x(r.inst)) + 6).attr('y', y + 33).style('font-size', '13px').style('font-weight', 600).style('fill', 'var(--color-fg)').text(SX.num(r.inst, 0) + ' млн+');
+  });
+});
+dash.draw('steamchart', (el) => {
+  el.replaceChildren();
+  const d = dash.data('steam'); if (d.status !== 'ok') { el.textContent = '—'; return; }
+  const W = el.clientWidth || 300, H = 140, top = 18, bot = 20;
+  const mon = ['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'];
+  const x = d3.scaleBand().domain(d.data.map((r) => r.month)).range([0, W]).padding(0.25);
+  const y = d3.scaleLinear().domain([0, d3.max(d.data, (r) => r.avg)]).range([H - bot, top]);
+  const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Средний онлайн Warspear Online в Steam по месяцам 2026 года');
+  const tip = SX.tip(el), last = d.data.length - 1;
+  d.data.forEach((r, i) => {
+    svg.append('rect').attr('x', x(r.month)).attr('y', y(r.avg)).attr('width', x.bandwidth()).attr('height', y(0) - y(r.avg)).attr('rx', 2)
+      .style('fill', i === last ? dash.colors[0] : 'var(--cds-chart-muted)')
+      .on('mousemove', (ev) => tip.show(ev, `${mon[+r.month.slice(5) - 1]} 2026: в среднем ${SX.num(r.avg, 0)} игроков онлайн`)).on('mouseleave', tip.hide);
+    svg.append('text').attr('x', x(r.month) + x.bandwidth() / 2).attr('y', H - 5).attr('text-anchor', 'middle').style('font-size', '11px').style('fill', 'var(--cds-text-secondary)').text(mon[+r.month.slice(5) - 1]);
+    if (i === last || i === 5 || i === 0) svg.append('text').attr('x', x(r.month) + x.bandwidth() / 2).attr('y', y(r.avg) - 4).attr('text-anchor', 'middle').style('font-size', '11px').style('font-weight', i === last ? 600 : 400).style('fill', 'var(--color-fg)').text(SX.num(r.avg, 0));
+  });
+});
+
+dash.draw('path', (ol) => {
+  const d = dash.data('events');
+  ol.replaceChildren();
+  if (d.status !== 'ok') return;
+  const dot = {'Продукт': dash.colors[0], 'Рост': 'var(--color-ok)', 'Компания': dash.colors[1] || dash.colors[0], 'Риск': 'var(--color-bad)'};
+  d.data.forEach((r) => {
+    const li = document.createElement('li'); li.className = 'sx-step'; li.dataset.key = r.date; li.title = r.event;
+    if (dot[r.kind]) li.style.setProperty('--sx-dot', dot[r.kind]);
+    const [y, m] = String(r.date).split('-');
+    const dd = document.createElement('span'); dd.className = 'd'; dd.textContent = m ? m + '.' + y : y;
+    const tt = document.createElement('span'); tt.className = 't'; tt.textContent = r.short;
+    li.append(dd, tt); ol.appendChild(li);
+  });
+});
+
+dash.draw('net', (el) => {
+  const N = dash.data('nodes'), L = dash.data('links');
+  el.replaceChildren();
+  if (N.status !== 'ok' || L.status !== 'ok') { el.textContent = (N.status === 'error' || L.status === 'error') ? 'Не загрузилось' : '—'; return; }
+  const nodes = N.data, links = L.data, W = el.clientWidth || 700, wide = W >= 620;
+  const cols = d3.max(nodes, (n) => +n.col) + 1, rowsN = d3.max(nodes, (n) => +n.row) + 1;
+  const boxH = 42, pos = new Map();
+  let boxW, H;
+  if (wide) {
+    boxW = Math.min(170, (W - 10) / cols - 36); const gapY = 26;
+    H = rowsN * (boxH + gapY);
+    const cx = (c) => 4 + boxW / 2 + c * ((W - boxW - 8) / (cols - 1));
+    nodes.forEach((n) => pos.set(n.node, {x: cx(+n.col), y: +n.row * (boxH + gapY) + boxH / 2 + 4}));
+  } else {
+    boxW = Math.min(240, W - 70); const gapY = 16;
+    const order = nodes.slice().sort((a, b) => (+a.col - +b.col) || (+a.row - +b.row));
+    order.forEach((n, i) => pos.set(n.node, {x: 4 + boxW / 2 + (+n.col % 2) * 14, y: i * (boxH + gapY) + boxH / 2 + 4}));
+    H = order.length * (boxH + gapY) + 4;
+  }
+  const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img')
+    .attr('aria-label', 'Карта связей: i-Free, учредители, АиГринд, Warspear Online, Skylore, TITULUM');
+  svg.append('defs').append('marker').attr('id', 'sx-arrow').attr('viewBox', '0 0 10 10').attr('refX', 9).attr('refY', 5).attr('markerWidth', 7).attr('markerHeight', 7).attr('orient', 'auto-start-reverse')
+    .append('path').attr('d', 'M0,0L10,5L0,10z').style('fill', 'var(--cds-chart-axis)');
+  const tip = SX.tip(el);
+  const edge = (a, b) => {
+    if (wide) {
+      let sx = a.x, sy = a.y, tx = b.x, ty = b.y;
+      if (Math.abs(b.x - a.x) > 1) { sx += Math.sign(b.x - a.x) * boxW / 2; tx -= Math.sign(b.x - a.x) * boxW / 2; }
+      else { sy += Math.sign(b.y - a.y) * boxH / 2; ty -= Math.sign(b.y - a.y) * boxH / 2; }
+      const mx = (sx + tx) / 2;
+      return {d: Math.abs(b.x - a.x) > 1 ? `M${sx},${sy} C${mx},${sy} ${mx},${ty} ${tx},${ty}` : `M${sx},${sy} L${tx},${ty}`, mx, my: (sy + ty) / 2};
+    }
+    const sx = a.x + boxW / 2, off = 14 + Math.abs(a.y - b.y) / 12, ex = Math.min(W - 14, sx + off);
+    return {d: `M${sx},${a.y} C${ex},${a.y} ${ex},${b.y} ${b.x + boxW / 2},${b.y}`, mx: ex - 3, my: (a.y + b.y) / 2};
+  };
+  const g = svg.append('g');
+  const badges = [];
+  links.forEach((l) => {
+    const a = pos.get(l.src), b = pos.get(l.dst); if (!a || !b) return;
+    const e = edge(a, b), text = `${l.n}. ${l.src} → ${l.dst}: ${l.relation} (${l.kind}; ${l.source})`;
+    g.append('path').attr('d', e.d).attr('marker-end', 'url(#sx-arrow)').style('fill', 'none').style('stroke', 'var(--cds-chart-axis)').style('stroke-width', 1.5).style('stroke-dasharray', l.kind === 'вывод' ? '5 4' : null);
+    g.append('path').attr('d', e.d).style('fill', 'none').style('stroke', 'transparent').style('stroke-width', 12).on('mousemove', (ev) => tip.show(ev, text)).on('mouseleave', tip.hide);
+    badges.push({x: e.mx, y: e.my, n: l.n, text});
+  });
+  const hl = new Set();
+  document.querySelectorAll('.sx-light[open]').forEach((d) => String(d.dataset.nodes || '').split('|').forEach((x) => hl.add(x)));
+  nodes.forEach((n) => {
+    const p = pos.get(n.node), main = n.node === 'АиГринд', on = hl.has(n.node), dim = hl.size && !on;
+    const ng = svg.append('g').attr('transform', `translate(${p.x - boxW / 2},${p.y - boxH / 2})`);
+    ng.style('opacity', dim ? 0.35 : 1);
+    ng.append('rect').attr('width', boxW).attr('height', boxH).attr('rx', 6).style('fill', main ? dash.colors[0] : 'var(--color-panel)').style('stroke', on ? 'var(--color-fg)' : main ? dash.colors[0] : 'var(--color-border-line)').style('stroke-width', on ? 2.5 : 1);
+    ng.append('text').attr('x', 8).attr('y', 17).style('font-size', '12px').style('font-weight', 600).style('fill', main ? 'var(--color-bg)' : 'var(--color-fg)').text(n.node);
+    ng.append('text').attr('x', 8).attr('y', 33).style('font-size', '11px').style('fill', main ? 'var(--color-bg)' : 'var(--cds-text-secondary)').text(n.note);
+    ng.selectAll('text').each(function () { let s = this.textContent; while (this.getComputedTextLength() > boxW - 14 && s.length > 4) { s = s.slice(0, -2); this.textContent = s + '…'; } });
+    ng.on('mousemove', (ev) => tip.show(ev, `${n.node}: ${n.note}`)).on('mouseleave', tip.hide);
+  });
+  badges.forEach((bd) => {
+    const bg = svg.append('g').attr('transform', `translate(${bd.x},${bd.y})`).on('mousemove', (ev) => tip.show(ev, bd.text)).on('mouseleave', tip.hide);
+    bg.append('circle').attr('r', 9).style('fill', 'var(--color-bg)').style('stroke', 'var(--cds-chart-axis)');
+    bg.append('text').attr('text-anchor', 'middle').attr('dy', '0.35em').style('font-size', '10px').style('fill', 'var(--color-fg)').text(bd.n);
+  });
+});
+
+window.__dashRunAll();
+</script>
+</body>
+</html>
