@@ -7,6 +7,7 @@
 | ЛУКОЙЛ — продажа зарубежного бизнеса после санкций | https://galatimoshenko.github.io/company-dashboards/lukoil/ |
 | Зарубежнефть — ставка на Вьетнам | https://galatimoshenko.github.io/company-dashboards/zarubezhneft/ |
 | АиГринд — игровая студия | https://galatimoshenko.github.io/company-dashboards/aigrind/ |
+| tNavigator (Rock Flow Dynamics) — разработчик ПО для моделирования месторождений | https://galatimoshenko.github.io/company-dashboards/tnavigator/ |
 | Volve — финмодель месторождения (DCF, Excel) | https://galatimoshenko.github.io/company-dashboards/volve-dcf/ |
 
 Как делаю: вопрос руководителя → факты с источниками → таблицы → выводы → одна страница. Страницы статичные (HTML + SVG), работают с телефона.
