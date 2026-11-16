@@ -8,6 +8,8 @@
 | Зарубежнефть — ставка на Вьетнам | https://galatimoshenko.github.io/company-dashboards/zarubezhneft/ |
 | АиГринд — игровая студия | https://galatimoshenko.github.io/company-dashboards/aigrind/ |
 | tNavigator (Rock Flow Dynamics) — разработчик ПО для моделирования месторождений | https://galatimoshenko.github.io/company-dashboards/tnavigator/ |
+| Газпром — Китай вместо Европы, прибыль на курсовых разницах | https://galatimoshenko.github.io/company-dashboards/gazprom/ |
+| Газпром нефть — рекордная добыча при падении прибыли, санкции и NIS | https://galatimoshenko.github.io/company-dashboards/gazpromneft/ |
 | ННК — продажа Пайяхи «Роснефти» и что стало с компанией | https://galatimoshenko.github.io/company-dashboards/nnk/ |
 | Финансовый обзор — маржа и причины убытков шести компаний | https://galatimoshenko.github.io/company-dashboards/finance-review/ |
 | Volve — финмодель месторождения (DCF, Excel) | https://galatimoshenko.github.io/company-dashboards/volve-dcf/ |

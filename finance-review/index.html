@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Финансовый обзор компаний</title>
-<meta name="description" content="Сравнение выручки, прибыли и маржи шести компаний из сводок на открытых данных. Подготовила Галина Тимошенко.">
+<meta name="description" content="Сравнение выручки, прибыли и маржи восьми компаний из сводок на открытых данных. Подготовила Галина Тимошенко.">
 <style>
 :root{--bg:#f6f7f9;--card:#fff;--ink:#1b2430;--mute:#5b6675;--line:#e3e7ec;--pos:#1f6f5c;--neg:#b42318;--acc:#1f5f99}
 *{box-sizing:border-box}
@@ -33,12 +33,12 @@ svg{display:block;width:100%;height:auto}
 <body>
 <div class="wrap">
 <div class="eyebrow">Финансовый обзор · открытые данные · ноябрь 2026</div>
-<h1>Три компании из шести закончили 2025 год с убытком, и у каждой своя причина: списание активов, долг или ставка на рост</h1>
+<h1>Три компании из восьми закончили 2025 год с убытком, и у каждой своя причина: списание активов, долг или ставка на рост</h1>
 <p class="lead">Свела в одну таблицу финансы компаний, по которым делала сводки. Отчётность разная (МСФО, РСБУ, одна дочерняя компания), поэтому сравниваю не абсолютные суммы, а динамику выручки и маржу: какую долю выручки компания превращает в чистую прибыль.</p>
 
 <div class="card">
  <h2>Чистая маржа за последний год с данными</h2>
- <p class="sub">Чистая прибыль, делённая на выручку. Для ЛУКОЙЛа серым показана маржа без разового списания зарубежных активов (моя оценка).</p>
+ <p class="sub">Чистая прибыль, делённая на выручку. Серым — моя оценка маржи без разовых статей: для ЛУКОЙЛа без списания зарубежных активов, для Газпрома без курсовых разниц.</p>
  <div id="mg"></div>
 </div>
 
@@ -48,8 +48,10 @@ svg{display:block;width:100%;height:auto}
  <div class="scroll"><table>
   <tr><th>Компания</th><th>Год, стандарт</th><th class="n">Выручка</th><th class="n">Рост выручки</th><th class="n">Чистая прибыль</th><th class="n">Маржа</th></tr>
   <tr><td><a href="../zarubezhneft/">Зарубежнефть</a></td><td>2024, РСБУ</td><td class="n">112,4 млрд ₽</td><td class="n pos">+47%</td><td class="n">28,3 млрд ₽</td><td class="n">25%</td></tr>
+  <tr><td><a href="../gazprom/">Газпром</a></td><td>2025, МСФО</td><td class="n">9 771 млрд ₽</td><td class="n neg">−9%</td><td class="n">1 307 млрд ₽</td><td class="n">13%</td></tr>
   <tr><td>Газпром шельфпроект</td><td>2023, РСБУ</td><td class="n">61,1 млрд ₽</td><td class="n pos">более чем ×2</td><td class="n">7,0 млрд ₽</td><td class="n">11%</td></tr>
   <tr><td><a href="../tnavigator/">ИРМ (tNavigator)</a></td><td>2025, РСБУ</td><td class="n">3,02 млрд ₽</td><td class="n pos">+48%</td><td class="n">0,28 млрд ₽</td><td class="n">9%</td></tr>
+  <tr><td><a href="../gazpromneft/">Газпром нефть</a></td><td>2025, МСФО</td><td class="n">3 607 млрд ₽</td><td class="n neg">−12%</td><td class="n">246 млрд ₽</td><td class="n">7%</td></tr>
   <tr><td><a href="../nnk/">ННК-Варьеганнефтегаз</a></td><td>2025</td><td class="n">64,2 млрд ₽</td><td class="n neg">−43%</td><td class="n neg">−4,45 млрд ₽</td><td class="n neg">−7%</td></tr>
   <tr><td><a href="../lukoil/">ЛУКОЙЛ</a></td><td>2025, МСФО</td><td class="n">3 767 млрд ₽</td><td class="n neg">−15%</td><td class="n neg">−1 059 млрд ₽</td><td class="n neg">−28%</td></tr>
   <tr><td><a href="../aigrind/">АиГринд</a></td><td>2025, РСБУ</td><td class="n">0,21 млрд ₽</td><td class="n pos">+34%</td><td class="n neg">−0,10 млрд ₽</td><td class="n neg">−48%</td></tr>
@@ -78,25 +80,25 @@ svg{display:block;width:100%;height:auto}
 
 <div class="card">
  <h2>Оговорки</h2>
- <p class="foot">Компании отчитываются по разным стандартам и за разные годы, поэтому таблица показывает картину, а не точное сравнение. Маржа ЛУКОЙЛа без списания — моя оценка: чистый убыток плюс обесценение, без учёта налогового эффекта. ННК представлена дочерней компанией Варьеганнефтегаз, сводной отчётности группы в открытом доступе нет. Финансы Газпром шельфпроекта за 2024–2025 гг. не раскрыты. Источники цифр указаны на страницах каждой сводки.</p>
+ <p class="foot">Компании отчитываются по разным стандартам и за разные годы, поэтому таблица показывает картину, а не точное сравнение. Маржа ЛУКОЙЛа без списания — моя оценка: чистый убыток плюс обесценение, без учёта налогового эффекта. Маржа Газпрома без курсовых разниц — тоже моя оценка: прибыль минус 567 млрд ₽ курсовых разниц, без учёта налога. ННК представлена дочерней компанией Варьеганнефтегаз, сводной отчётности группы в открытом доступе нет. Финансы Газпром шельфпроекта за 2024–2025 гг. не раскрыты. Источники цифр указаны на страницах каждой сводки.</p>
 </div>
 
 <p class="foot">Сделано на открытых данных. Автор: Галина Тимошенко · <a href="https://github.com/GalaTimoshenko">GitHub</a> · <a href="../">все сводки</a></p>
 </div>
 <script>
-const D=[['Зарубежнефть (2024)',25],['Газпром шельфпроект (2023)',11],['ИРМ / tNavigator',9],['ННК-Варьеганнефтегаз',-7],['ЛУКОЙЛ',-28,16],['АиГринд',-48]];
+const D=[['Зарубежнефть (2024)',25],['Газпром',13,8,'без курсовых'],['Газпром шельфпроект (2023)',11],['ИРМ / tNavigator',9],['Газпром нефть',7],['ННК-Варьеганнефтегаз',-7],['ЛУКОЙЛ',-28,16,'без списания'],['АиГринд',-48]];
 const NS='http://www.w3.org/2000/svg';
 function el(t,a,p){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p&&p.appendChild(e);return e}
 function tx(p,x,y,s,a){const e=el('text',Object.assign({x,y,'font-size':13,fill:'#5b6675','font-family':'inherit'},a||{}),p);e.textContent=s;return e}
-(function(){const host=document.getElementById('mg'),sm=host.clientWidth<600,W=sm?420:960,lab=sm?150:230,row=34,H=D.length*row+30;
+(function(){const host=document.getElementById('mg'),sm=host.clientWidth<600,W=sm?470:960,lab=sm?178:230,row=34,H=D.length*row+30;
  const mn=-55,mx=35,x0=lab+10,x=v=>x0+(W-x0-40)*(v-mn)/(mx-mn);
  const s=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Чистая маржа по компаниям'},host);
  [-50,-25,0,25].forEach(v=>{el('line',{x1:x(v),x2:x(v),y1:0,y2:H-22,stroke:v?'#e3e7ec':'#9aa4b1'},s);tx(s,x(v),H-6,v+'%',{'text-anchor':'middle','font-size':12})});
- D.forEach(([n,v,alt],i)=>{const y=i*row+6;tx(s,lab,y+18,n,{'text-anchor':'end',fill:'#1b2430','font-size':sm?11:13});
+ D.forEach(([n,v,alt,al],i)=>{const y=i*row+6;tx(s,lab,y+18,n,{'text-anchor':'end',fill:'#1b2430','font-size':sm?11:13});
   if(alt!==undefined)el('rect',{x:x(0),y:y+4,width:x(alt)-x(0),height:20,fill:'#c9d1db',rx:2},s);
   el('rect',{x:Math.min(x(v),x(0)),y:y+8,width:Math.abs(x(v)-x(0)),height:12,fill:v<0?'#b42318':'#1f6f5c',rx:2},s);
   tx(s,v<0?x(v)-6:x(v)+6,y+18,(v>0?'+':'')+v+'%',{'text-anchor':v<0?'end':'start',fill:'#1b2430','font-weight':600});
-  if(alt!==undefined)tx(s,x(alt)+6,y+18,'≈+'+alt+'% без списания',{fill:'#5b6675','font-size':12});
+  if(alt!==undefined)tx(s,Math.max(x(alt),v>0?x(v)+46:0)+6,y+18,sm?'(≈+'+alt+'%)':'(≈+'+alt+'% '+al+')',{fill:'#5b6675','font-size':12});
  });})();
 </script>
 </body>
