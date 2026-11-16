@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Финансовый обзор компаний</title>
-<meta name="description" content="Сравнение выручки, прибыли и маржи восьми компаний из сводок на открытых данных. Подготовила Галина Тимошенко.">
+<meta name="description" content="Сравнение выручки, прибыли и маржи семи компаний из сводок на открытых данных. Подготовила Галина Тимошенко.">
 <style>
 :root{--bg:#f6f7f9;--card:#fff;--ink:#1b2430;--mute:#5b6675;--line:#e3e7ec;--pos:#1f6f5c;--neg:#b42318;--acc:#1f5f99}
 *{box-sizing:border-box}
@@ -33,7 +33,7 @@ svg{display:block;width:100%;height:auto}
 <body>
 <div class="wrap">
 <div class="eyebrow">Финансовый обзор · открытые данные · ноябрь 2026</div>
-<h1>Три компании из восьми закончили 2025 год с убытком, и у каждой своя причина: списание активов, долг или ставка на рост</h1>
+<h1>Две компании из семи закончили 2025 год с убытком, и причины разные: разовое списание у ЛУКОЙЛа, долг у дочки ННК</h1>
 <p class="lead">Свела в одну таблицу финансы компаний, по которым делала сводки. Отчётность разная (МСФО, РСБУ, одна дочерняя компания), поэтому сравниваю не абсолютные суммы, а динамику выручки и маржу: какую долю выручки компания превращает в чистую прибыль.</p>
 
 <div class="card">
@@ -54,7 +54,6 @@ svg{display:block;width:100%;height:auto}
   <tr><td><a href="../gazpromneft/">Газпром нефть</a></td><td>2025, МСФО</td><td class="n">3 607 млрд ₽</td><td class="n neg">−12%</td><td class="n">246 млрд ₽</td><td class="n">7%</td></tr>
   <tr><td><a href="../nnk/">ННК-Варьеганнефтегаз</a></td><td>2025</td><td class="n">64,2 млрд ₽</td><td class="n neg">−43%</td><td class="n neg">−4,45 млрд ₽</td><td class="n neg">−7%</td></tr>
   <tr><td><a href="../lukoil/">ЛУКОЙЛ</a></td><td>2025, МСФО</td><td class="n">3 767 млрд ₽</td><td class="n neg">−15%</td><td class="n neg">−1 059 млрд ₽</td><td class="n neg">−28%</td></tr>
-  <tr><td><a href="../aigrind/">АиГринд</a></td><td>2025, РСБУ</td><td class="n">0,21 млрд ₽</td><td class="n pos">+34%</td><td class="n neg">−0,10 млрд ₽</td><td class="n neg">−48%</td></tr>
  </table></div>
 </div>
 
@@ -63,7 +62,6 @@ svg{display:block;width:100%;height:auto}
   <h2>Почему убыток — не одно и то же</h2>
   <p><b>ЛУКОЙЛ: разовое списание.</b> Обесценение зарубежных активов 1,67 трлн ₽ после санкций. Без него компания была бы в прибыли, операционная прибыль 527 млрд ₽ осталась положительной. Долг за год упал на 78%.</p>
   <p><b>ННК-Варьеганнефтегаз: выручка и долг.</b> Выручка почти вдвое ниже, EBITDA упала с 22,8 млрд ₽ (2023) до 6,7 млрд ₽, процентные расходы выросли с 0,03 до 4,55 млрд ₽. Это не разовая статья, а смена модели: у дочерней компании появился долг.</p>
-  <p><b>АиГринд: ставка на рост.</b> Выручка растёт на треть, но расходы растут быстрее: судя по всему, это разработка двух игр (мой вывод). Капитал сократился почти вчетверо: вопрос, хватит ли денег до следующего релиза.</p>
  </div>
  <div class="card">
   <h2>Что я смотрю в отчётности в первую очередь</h2>
@@ -86,14 +84,14 @@ svg{display:block;width:100%;height:auto}
 <p class="foot">Сделано на открытых данных. Автор: Галина Тимошенко · <a href="https://github.com/GalaTimoshenko">GitHub</a> · <a href="../">все сводки</a></p>
 </div>
 <script>
-const D=[['Зарубежнефть (2024)',25],['Газпром',13,8,'без курсовых'],['Газпром шельфпроект (2023)',11],['ИРМ / tNavigator',9],['Газпром нефть',7],['ННК-Варьеганнефтегаз',-7],['ЛУКОЙЛ',-28,16,'без списания'],['АиГринд',-48]];
+const D=[['Зарубежнефть (2024)',25],['Газпром',13,8,'без курсовых'],['Газпром шельфпроект (2023)',11],['ИРМ / tNavigator',9],['Газпром нефть',7],['ННК-Варьеганнефтегаз',-7],['ЛУКОЙЛ',-28,16,'без списания']];
 const NS='http://www.w3.org/2000/svg';
 function el(t,a,p){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p&&p.appendChild(e);return e}
 function tx(p,x,y,s,a){const e=el('text',Object.assign({x,y,'font-size':13,fill:'#5b6675','font-family':'inherit'},a||{}),p);e.textContent=s;return e}
 (function(){const host=document.getElementById('mg'),sm=host.clientWidth<600,W=sm?470:960,lab=sm?178:230,row=34,H=D.length*row+30;
- const mn=-55,mx=35,x0=lab+10,x=v=>x0+(W-x0-40)*(v-mn)/(mx-mn);
+ const mn=-35,mx=30,x0=lab+10,x=v=>x0+(W-x0-40)*(v-mn)/(mx-mn);
  const s=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Чистая маржа по компаниям'},host);
- [-50,-25,0,25].forEach(v=>{el('line',{x1:x(v),x2:x(v),y1:0,y2:H-22,stroke:v?'#e3e7ec':'#9aa4b1'},s);tx(s,x(v),H-6,v+'%',{'text-anchor':'middle','font-size':12})});
+ [-25,0,25].forEach(v=>{el('line',{x1:x(v),x2:x(v),y1:0,y2:H-22,stroke:v?'#e3e7ec':'#9aa4b1'},s);tx(s,x(v),H-6,v+'%',{'text-anchor':'middle','font-size':12})});
  D.forEach(([n,v,alt,al],i)=>{const y=i*row+6;tx(s,lab,y+18,n,{'text-anchor':'end',fill:'#1b2430','font-size':sm?11:13});
   if(alt!==undefined)el('rect',{x:x(0),y:y+4,width:x(alt)-x(0),height:20,fill:'#c9d1db',rx:2},s);
   el('rect',{x:Math.min(x(v),x(0)),y:y+8,width:Math.abs(x(v)-x(0)),height:12,fill:v<0?'#b42318':'#1f6f5c',rx:2},s);
