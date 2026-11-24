@@ -4,6 +4,7 @@
 
 | Сводка | Ссылка |
 |---|---|
+| Газпром шельфпроект — карта связей с «Авророй», Андреем Патрушевым и «Арктическими инициативами» | https://galatimoshenko.github.io/company-dashboards/gazprom-shelfproject/ |
 | ЛУКОЙЛ — продажа зарубежного бизнеса после санкций | https://galatimoshenko.github.io/company-dashboards/lukoil/ |
 | Зарубежнефть — ставка на Вьетнам | https://galatimoshenko.github.io/company-dashboards/zarubezhneft/ |
 | АиГринд — игровая студия | https://galatimoshenko.github.io/company-dashboards/aigrind/ |
